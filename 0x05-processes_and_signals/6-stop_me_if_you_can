@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-# uses pkill for process killing made easy
+#bash script that stop 
+#without kill or killall
+
 pkill -f 4-to_infinity_and_beyond
