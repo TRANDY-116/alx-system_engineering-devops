@@ -1,0 +1,6 @@
+# Installing a package(Flask from pip)3 using Puppet
+
+package { 'flask':
+  ensure   =>  '2.1.0',
+  provider =>  'pip3',
+}
