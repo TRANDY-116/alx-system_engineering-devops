@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Copy script to web-01
+scp 0-custom_http_response_header ubuntu@52.91.203.16:/home/ubuntu/
+
+# Copy script to web-02
+scp 0-custom_http_response_header ubuntu@52.3.253.232:/home/ubuntu/
