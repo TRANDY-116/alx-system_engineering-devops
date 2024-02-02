@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Update package information
+sudo apt-get update
+
+# Install nginx
+sudo apt-get install -y nginx
+
+# Configure Nginx
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Create a simple index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Configure redirection for /redirect_me with a 301 Moved Permanently
+redirect_config="server_name _;\n\tlocation /redirect_me {\n\t\treturn 301 https://twitter.com/trandy_116;\n\t}"
+sudo sed -i "/server_name _;/c\\$redirect_config" /etc/nginx/sites-enabled/default
+
+# Restart Nginx to apply changes
+sudo service nginx restart
+
+echo "Nginx configuration completed. Your server is now redirecting /redirect_me with a 301 Moved Permanently to https://twitter.com/FabPaul1."
+
