@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Script that rediects to a 301 moved parmanently site
 
 # Update package information
 sudo apt-get update
@@ -19,5 +20,4 @@ sudo sed -i "/server_name _;/c\\$redirect_config" /etc/nginx/sites-enabled/defau
 # Restart Nginx to apply changes
 sudo service nginx restart
 
-echo "Nginx configuration completed. Your server is now redirecting /redirect_me with a 301 Moved Permanently to https://twitter.com/FabPaul1."
-
+echo "Nginx configuration completed. Your server is now redirecting /redirect_me with a 301 Moved Permanently to redirection site"
