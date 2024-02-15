@@ -34,7 +34,7 @@ log-error       = /var/log/mysql/error.log
 log_bin         = /var/log/mysql/mysql-bin.log
 server-id       = 1
 # By default we only accept connections from localhost
-bind-address    = 0.0.0.0
+# bind-address    = 0.0.0.0
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 # Database we wamt to replicate
