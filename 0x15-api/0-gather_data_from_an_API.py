@@ -46,7 +46,7 @@ if __name__ == '__main__':
     total_tasks, completed_tasks, non_completed_tasks = \
         calculate_task_progress(todo_data)
 
-    print(f"Employee {employee_name} is done with tasks \
+    print(f"Employee {employee_name} is done with tasks\
             ({completed_tasks}/{total_tasks}):")
 
     for todo in todo_data:
