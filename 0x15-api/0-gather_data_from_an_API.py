@@ -51,4 +51,4 @@ if __name__ == '__main__':
 
     for todo in todo_data:
         if todo['completed']:
-            print('\t', todo['title'])
+            print('\t ', todo['title'])
