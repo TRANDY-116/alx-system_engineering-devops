@@ -4,19 +4,29 @@
 subreddit is given, the function should return 0. """
 
 import requests
-
+from requests.exceptions import RequestException
 
 def number_of_subscribers(subreddit):
-    """function to return the number of subscribers for a given subreddit """
-    base_url = "https://www.reddit.com/"
-    user_url = f"{base_url}/r/{subreddit}/about.json"
+   try:
+       # Set custom headers, including a User-Agent
+       headers = {
+           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+       }
 
-    user_agent = {"User-Agent": "Alx/requests"}
+       # Make a GET request to the Reddit API for the specified subreddit
+       url = f'https://www.reddit.com/r/{subreddit}/about.json'
+       response = requests.get(url, headers=headers, allow_redirects=False)
+       response.raise_for_status()  # Raise an exception for non-2xx status codes
 
-    response = requests.get(user_url, headers=user_agent,
-                            allow_redirects=False)
+       # Extract the number of subscribers from the response JSON
+       data = response.json()
+       if 'data' in data and 'subscribers' in data['data']:
+           subscribers = data['data']['subscribers']
+           return subscribers
+       else:
+           return 0  # Subreddit data not found or in an unexpected format
 
-    if response.status_code >= 300:
-        return 0
-
-    return response.json().get("data").get("subscribers")
+   except RequestException as e:
+       # Handle exceptions related to the HTTP request
+       print(f"Error: {e}")
+       return 0
