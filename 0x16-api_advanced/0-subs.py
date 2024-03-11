@@ -6,13 +6,14 @@ subreddit is given, the function should return 0. """
 import requests
 from requests.exceptions import RequestException
 
-def number_of_subscribers(subreddit):
    try:
-       # Set custom headers, including a User-Agent
-       headers = {
-           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+      # Set custom headers, including a User-Agent
+           headers = {
+           'User-A
+           gent': 'MozillaMozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
        }
 
+ for the specified subreddit
        # Make a GET request to the Reddit API for the specified subreddit
        url = f'https://www.reddit.com/r/{subreddit}/about.json'
        response = requests.get(url, headers=headers, allow_redirects=False)
@@ -24,9 +25,9 @@ def number_of_subscribers(subreddit):
            subscribers = data['data']['subscribers']
            return subscribers
        else:
-           return 0  # Subreddit data not found or in an unexpected format
-
-   except RequestException as e:
+           return 0  
+       
+    except RequestException as e:
        # Handle exceptions related to the HTTP request
        print(f"Error: {e}")
        return 0
